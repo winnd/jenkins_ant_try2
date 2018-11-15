@@ -1,0 +1,4 @@
+@Service 
+表示AreaServiceImpl是spring托管的
+当别的类使用到AreaService时
+SpringIOC会动态的把AreaServiceImpl注入到接口里去
