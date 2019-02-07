@@ -3,20 +3,42 @@ package com.example.demo.enity;
 import java.util.Date;
 
 public class ShopCategory {
-    private Long shopCategoryId;
-    private String shopCategoryName;
-    private String shopCategoryDesc;
-    private String shopCategoryImg;
-    private Integer priority;
-    private Date createTime;
-    private Date lastEditTime;
-    private ShopCategory parent;
+    private Integer shopCategoryId;
 
-    public Long getShopCategoryId() {
+    private String shopCategoryName;
+
+    private String shopCategoryDesc;
+
+    private String shopCategoryImg;
+
+    private Integer priority;
+
+    private Date createTime;
+
+    private Date updateTime;
+
+    private Integer parentId;
+
+    public ShopCategory(Integer shopCategoryId, String shopCategoryName, String shopCategoryDesc, String shopCategoryImg, Integer priority, Date createTime, Date updateTime, Integer parentId) {
+        this.shopCategoryId = shopCategoryId;
+        this.shopCategoryName = shopCategoryName;
+        this.shopCategoryDesc = shopCategoryDesc;
+        this.shopCategoryImg = shopCategoryImg;
+        this.priority = priority;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.parentId = parentId;
+    }
+
+    public ShopCategory() {
+        super();
+    }
+
+    public Integer getShopCategoryId() {
         return shopCategoryId;
     }
 
-    public void setShopCategoryId(Long shopCategoryId) {
+    public void setShopCategoryId(Integer shopCategoryId) {
         this.shopCategoryId = shopCategoryId;
     }
 
@@ -25,7 +47,7 @@ public class ShopCategory {
     }
 
     public void setShopCategoryName(String shopCategoryName) {
-        this.shopCategoryName = shopCategoryName;
+        this.shopCategoryName = shopCategoryName == null ? null : shopCategoryName.trim();
     }
 
     public String getShopCategoryDesc() {
@@ -33,7 +55,7 @@ public class ShopCategory {
     }
 
     public void setShopCategoryDesc(String shopCategoryDesc) {
-        this.shopCategoryDesc = shopCategoryDesc;
+        this.shopCategoryDesc = shopCategoryDesc == null ? null : shopCategoryDesc.trim();
     }
 
     public String getShopCategoryImg() {
@@ -41,7 +63,7 @@ public class ShopCategory {
     }
 
     public void setShopCategoryImg(String shopCategoryImg) {
-        this.shopCategoryImg = shopCategoryImg;
+        this.shopCategoryImg = shopCategoryImg == null ? null : shopCategoryImg.trim();
     }
 
     public Integer getPriority() {
@@ -60,19 +82,19 @@ public class ShopCategory {
         this.createTime = createTime;
     }
 
-    public Date getLastEditTime() {
-        return lastEditTime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setLastEditTime(Date lastEditTime) {
-        this.lastEditTime = lastEditTime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public ShopCategory getParent() {
-        return parent;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setParent(ShopCategory parent) {
-        this.parent = parent;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 }

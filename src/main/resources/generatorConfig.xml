@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+    "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+  <!--导入db属性配置-->
+  <properties resource="jdbc.properties"></properties>
+
+  <!--指定特定数据库的jdbc驱动jar包的位置-->
+  <classPathEntry location="${jdbc.driverUrI}"/>
+
+  <context id="default" targetRuntime="MyBatis3"><!-- optional，旨在创建class时，对注释进行控制 -->
+    <commentGenerator>
+      <property name="suppressDate" value="true"/>
+      <property name="suppressAllComments" value="true"/>
+    </commentGenerator>
+
+    <!--jdbc的数据库连接 -->
+    <jdbcConnection
+        driverClass="${jdbc.driver}"
+        connectionURL="${jdbc.url}"
+        userId="${jdbc.username}"
+        password="${jdbc.password}">
+    </jdbcConnection>
+
+    <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
+    <javaTypeResolver>
+      <property name="forceBigDecimals" value="false"/>
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="com.example.demo.enity" targetProject="src/main/java">
+      <property name="constructorBased" value="true"/><!-- 是否对model添加 构造函数 -->
+      <property name="trimStrings" value="true"/><!-- trim操作 -->
+      <property name="immutable" value="false"/><!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
+    </javaModelGenerator>
+
+    <!--mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 -->
+    <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+      <property name="enableSubPackages" value="false"/>
+    </sqlMapGenerator>
+
+    <!-- targetPackage：mapper接口dao生成的位置 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.demo.dao" targetProject="src/main/java">
+      <!-- enableSubPackages:是否让schema作为包的后缀 -->
+      <property name="enableSubPackages" value="false"/>
+    </javaClientGenerator>
+
+    <table tableName="tb_shop_category" domainObjectName="ShopCategory" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    <!--<table tableName="tb_shop" domainObjectName="Shop" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+
+  </context>
+</generatorConfiguration>
+

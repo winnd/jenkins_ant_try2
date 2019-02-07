@@ -17,4 +17,6 @@ import com.example.demo.enity.Shop;
 public interface ShopDao {
 
     int insertShop(Shop shop);
+
+    int updateByPrimaryKey(Shop record);
 }

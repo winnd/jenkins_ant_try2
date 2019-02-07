@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.dao.AreaDao;
 import com.example.demo.enity.Area;
 import com.example.demo.service.AreaService;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +22,12 @@ import java.util.List;
  * @version 1.1
  */
 
-@Service 
+@Service
 public class AreaServiceImpl implements AreaService {
     @Autowired private AreaDao areaDao;
     
     @Override
     public List<Area> getAreaList() {
-        return areaDao.queryArea();
+        return areaDao.queryArea(); 
     } 
 }

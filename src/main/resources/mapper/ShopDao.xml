@@ -2,5 +2,29 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.AreaDao">
-  
+<mapper namespace="com.example.demo.dao.ShopDao">
+  <insert id="insertShop" useGeneratedKeys="true" keyColumn="shop_id" keyProperty="shopId">
+    INSERT into tb_shop(owner_id, area_id, shop_category_id, shop_name, shop_desc, shop_addr, phone, shop_img, priority, create_time, update_time, enable_status, advice)
+    values (#{owner.userId}, #{area.areaId}, #{shopCategory.shopCategoryId}, #{shopName}, #{shopDesc}, #{shopAddr}, #{phone}, #{shopImg}, #{priority}, #{createTime}, #{lastEditTime}, #{enableStatus}, #{advice})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.enity.Shop">
+    update tb_shop
+    <set>
+      <if test="ownerId != null">owner_id = #{personInfo.ownerId,jdbcType=INTEGER},</if>
+      <if test="area != null">area_id = #{area.areaId,jdbcType=INTEGER},</if>
+      <if test="shopCategory != null">shop_category_id = #{shopCategory.shopCategoryId,jdbcType=INTEGER},</if>
+      <if test="shopName != null">shop_name = #{shopName,jdbcType=VARCHAR},</if>
+      <if test="shopDesc != null">shop_desc = #{shopDesc,jdbcType=VARCHAR},</if>
+      <if test="shopAddr != null">shop_addr = #{shopAddr,jdbcType=VARCHAR},</if>
+      <if test="phone != null">phone = #{phone,jdbcType=VARCHAR},</if>
+      <if test="shopImg != null">shop_img = #{shopImg,jdbcType=VARCHAR},</if>
+      <if test="priority != null">priority = #{priority,jdbcType=INTEGER},</if>
+      <if test="createTime != null">create_time = #{createTime,jdbcType=TIMESTAMP},</if>
+      <if test="updateTime != null">update_time = #{updateTime,jdbcType=TIMESTAMP},</if>
+      <if test="enableStatus != null">enable_status = #{enableStatus,jdbcType=INTEGER},</if>
+      <if test="advice != null">advice = #{advice,jdbcType=VARCHAR},</if>
+    </set>
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </update>
+</mapper>

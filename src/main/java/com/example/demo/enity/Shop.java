@@ -1,31 +1,94 @@
 package com.example.demo.enity;
 
+import java.security.acl.Owner;
 import java.util.Date;
 
 public class Shop {
-    private Long shopId;
+    private Integer shopId;
+
+    private Integer ownerId;
+
+    private Integer areaId;
+
+    private Integer shopCategoryId;
+
     private String shopName;
+
     private String shopDesc;
+
     private String shopAddr;
+
     private String phone;
+
     private String shopImg;
+
     private Integer priority;
+
     private Date createTime;
-    private Date lastEditTime;
-    // -1 不可用 0 审核中 1 可用
+
+    private Date updateTime;
+
     private Integer enableStatus;
-    // 超级管理员给店家的提醒
+
     private String advice;
+
     private Area area;
-    private PersonInfo owner;
+
     private ShopCategory shopCategory;
 
-    public Long getShopId() {
+    private PersonInfo owner;
+
+    public Shop(Integer shopId, Integer ownerId, Integer areaId, Integer shopCategoryId, String shopName, String shopDesc, String shopAddr, String phone, String shopImg, Integer priority, Date createTime, Date updateTime, Integer enableStatus, String advice) {
+        this.shopId = shopId;
+        this.ownerId = ownerId;
+        this.areaId = areaId;
+        this.shopCategoryId = shopCategoryId;
+        this.shopName = shopName;
+        this.shopDesc = shopDesc;
+        this.shopAddr = shopAddr;
+        this.phone = phone;
+        this.shopImg = shopImg;
+        this.priority = priority;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.enableStatus = enableStatus;
+        this.advice = advice;
+    }
+
+    public Shop() {
+        super();
+    }
+
+    public Integer getShopId() {
         return shopId;
     }
 
-    public void setShopId(Long shopId) {
+    public void setShopId(Integer shopId) {
         this.shopId = shopId;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public Integer getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(Integer areaId) {
+        this.areaId = areaId;
+    }
+
+    public Integer getShopCategoryId() {
+        return shopCategoryId;
+    }
+
+    public void setShopCategoryId(Integer shopCategoryId) {
+        this.shopCategoryId = shopCategoryId;
     }
 
     public String getShopName() {
@@ -33,7 +96,7 @@ public class Shop {
     }
 
     public void setShopName(String shopName) {
-        this.shopName = shopName;
+        this.shopName = shopName == null ? null : shopName.trim();
     }
 
     public String getShopDesc() {
@@ -41,7 +104,7 @@ public class Shop {
     }
 
     public void setShopDesc(String shopDesc) {
-        this.shopDesc = shopDesc;
+        this.shopDesc = shopDesc == null ? null : shopDesc.trim();
     }
 
     public String getShopAddr() {
@@ -49,7 +112,7 @@ public class Shop {
     }
 
     public void setShopAddr(String shopAddr) {
-        this.shopAddr = shopAddr;
+        this.shopAddr = shopAddr == null ? null : shopAddr.trim();
     }
 
     public String getPhone() {
@@ -57,7 +120,7 @@ public class Shop {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getShopImg() {
@@ -65,7 +128,7 @@ public class Shop {
     }
 
     public void setShopImg(String shopImg) {
-        this.shopImg = shopImg;
+        this.shopImg = shopImg == null ? null : shopImg.trim();
     }
 
     public Integer getPriority() {
@@ -84,12 +147,12 @@ public class Shop {
         this.createTime = createTime;
     }
 
-    public Date getLastEditTime() {
-        return lastEditTime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setLastEditTime(Date lastEditTime) {
-        this.lastEditTime = lastEditTime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public Integer getEnableStatus() {
@@ -105,7 +168,7 @@ public class Shop {
     }
 
     public void setAdvice(String advice) {
-        this.advice = advice;
+        this.advice = advice == null ? null : advice.trim();
     }
 
     public Area getArea() {
@@ -116,19 +179,19 @@ public class Shop {
         this.area = area;
     }
 
-    public PersonInfo getOwner() {
-        return owner;
-    }
-
-    public void setOwner(PersonInfo owner) {
-        this.owner = owner;
-    }
-
     public ShopCategory getShopCategory() {
         return shopCategory;
     }
 
     public void setShopCategory(ShopCategory shopCategory) {
         this.shopCategory = shopCategory;
+    }
+
+    public PersonInfo getOwner() {
+        return owner;
+    }
+
+    public void setOwner(PersonInfo owner) {
+        this.owner = owner;
     }
 }
